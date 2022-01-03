@@ -1,5 +1,6 @@
 package com.darksoldier1404.dvs.functions;
 
+import com.darksoldier1404.duc.lang.DLang;
 import com.darksoldier1404.duc.utils.ConfigUtils;
 import com.darksoldier1404.duc.utils.NBT;
 import com.darksoldier1404.dvs.VirtualStorage;
@@ -8,32 +9,30 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BundleMeta;
 
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class DVSFunction {
     private static final VirtualStorage plugin = VirtualStorage.getInstance();
+    private static final DLang lang = plugin.lang;
 
     public static void buyStorage(Player p) {
         if (plugin.ess == null) {
-            p.sendMessage("§c에센셜 플러그인이 설치되어있지 않아 창고 구매 기능을 사용하실 수 없습니다.");
+            p.sendMessage(lang.get("essential_is_not_found"));
             return;
         }
         UUID uuid = p.getUniqueId();
         YamlConfiguration data = plugin.udata.get(uuid);
-        if (plugin.config.getInt("Settings.MaxStorage") <= data.getInt("Player.MaxStorage") || data.getInt("Player.MaxStorage") == 54) {
-            p.sendMessage(plugin.prefix + "§c창고 구매를 실패했습니다. 창고 구매 개수는 최대 " + plugin.config.getInt("Settings.MaxStorage") + "개입니다.");
+        if (plugin.config.getInt("Settings.MaxStorage") >= data.getInt("Player.MaxStorage") || data.getInt("Player.MaxStorage") == 54) {
+            p.sendMessage(plugin.prefix + lang.getWithArgs("cant_buy_storage_is_max", plugin.config.getInt("Settings.MaxStorage") + ""));
             return;
         }
         final BigDecimal price = new BigDecimal(plugin.getConfig().getString("Settings.Price"));
         if (plugin.ess.getUser(uuid).getMoney().compareTo(price) < 0) {
-            p.sendMessage(plugin.prefix + "§c돈이 부족합니다. §6구매비용 : " + price + "원");
+            p.sendMessage(plugin.prefix + lang.getWithArgs("cant_buy_not_enough_money", price + ""));
             return;
         }
         try {
@@ -96,9 +95,32 @@ public class DVSFunction {
         ConfigUtils.saveCustomData(plugin, plugin.udata.get(uuid), uuid.toString(), "data/");
     }
 
-
     public static void quitAndSaveData(UUID uuid) {
         saveData(uuid);
         plugin.udata.remove(uuid);
+    }
+
+    public static void loadDefaultLangFiles() {
+        File f = new File(plugin.getDataFolder() + "/lang", "Korean.yml");
+        if (!f.exists()) {
+            plugin.saveResource("lang/Korean.yml", false);
+        }
+        f = new File(plugin.getDataFolder() + "/lang", "English.yml");
+        if (!f.exists()) {
+            plugin.saveResource("lang/English.yml", false);
+        }
+        for (YamlConfiguration data : ConfigUtils.loadCustomDataList(plugin, "lang")) {
+            try {
+                plugin.langFiles.put(data.getString("Lang"), data);
+            } catch (Exception e) {
+                System.out.println(plugin.prefix + "Error loading lang file: " + data.getName());
+            }
+        }
+        if (plugin.config.get("Settings.lang") == null) {
+            plugin.config.set("Settings.lang", "English");
+            plugin.lang = new DLang(plugin.langFiles.get("English"));
+        } else {
+            plugin.lang = new DLang(plugin.langFiles.get(plugin.config.getString("Settings.lang")));
+        }
     }
 }

@@ -1,6 +1,7 @@
 package com.darksoldier1404.dvs;
 
 import com.darksoldier1404.duc.UniversalCore;
+import com.darksoldier1404.duc.lang.DLang;
 import com.darksoldier1404.duc.utils.ConfigUtils;
 import com.darksoldier1404.dvs.commands.DVSCommand;
 import com.darksoldier1404.dvs.events.DVSEvent;
@@ -24,7 +25,9 @@ public class VirtualStorage extends JavaPlugin {
     public YamlConfiguration config;
     public Map<UUID, YamlConfiguration> udata = new HashMap<>();
     public Map<UUID, Integer> currentInventory = new HashMap<>();
+    public Map<String, YamlConfiguration> langFiles = new HashMap<>();
     public Essentials ess = null;
+    public DLang lang;
 
     public static VirtualStorage getInstance() {
         return plugin;
@@ -39,6 +42,7 @@ public class VirtualStorage extends JavaPlugin {
             return;
         }
         core = (UniversalCore) pl;
+        DVSFunction.loadDefaultLangFiles();
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         plugin.getServer().getPluginManager().registerEvents(new DVSEvent(), plugin);
         getCommand("창고").setExecutor(new DVSCommand());

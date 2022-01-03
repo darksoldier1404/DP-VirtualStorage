@@ -1,0 +1,8 @@
+Lang: "Korean"
+
+storage_cmd_select: "/창고 선택 - 가상 창고 선택 GUI를 오픈합니다."
+storage_cmd_buy: "/창고 구매 - 가상 창고를 추가로 구매합니다."
+
+essential_is_not_found: "§c에센셜 플러그인이 설치되어있지 않아 창고 구매 기능을 사용하실 수 없습니다."
+cant_buy_storage_is_max: "§c창고 구매를 실패했습니다. 창고 구매 개수는 {0} 개입니다."
+cant_buy_not_enough_money: "§c돈이 부족합니다. §6구매비용 : {0} 원"
