@@ -43,6 +43,7 @@ public class VirtualStorage extends JavaPlugin {
         }
         core = (UniversalCore) pl;
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
+        prefix = config.getString("Settings.prefix");
         DVSFunction.loadDefaultLangFiles();
         plugin.getServer().getPluginManager().registerEvents(new DVSEvent(), plugin);
         getCommand("창고").setExecutor(new DVSCommand());

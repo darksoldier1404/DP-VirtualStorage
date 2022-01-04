@@ -12,7 +12,7 @@ tasks.withType(JavaCompile) {
 }
 
 group 'github.com/darksoldier1404'
-version = '1.0.0.47'
+version = '1.0.0.48'
 
 configurations {
     jar.archiveName = 'DP-VirtualStorage-_v1_18_1-' + version + '.jar'
