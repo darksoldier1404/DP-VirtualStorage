@@ -1,6 +1,10 @@
 Settings:
   prefix: "&f[ &6창고 &f] "
 
+  # 언어 파일 | Language file
+  # 경로 | Path: plugins/DP-LegendaryCash/lang/
+  lang: "Korean"
+
   # 구매 가능한 창고 최대 갯수 입니다.
   MaxStorage: 54
 

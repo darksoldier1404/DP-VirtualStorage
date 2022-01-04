@@ -1,5 +1,5 @@
 name: DP-VirtualStorage
-version: 1.0.0.45
+version: 1.0.0.47
 main: com.darksoldier1404.dvs.VirtualStorage
 api-version: 1.14
 authors: [ DEAD_POOLIO_ ]
