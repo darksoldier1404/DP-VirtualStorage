@@ -8,6 +8,7 @@ import com.darksoldier1404.dvs.events.DVSEvent;
 import com.darksoldier1404.dvs.functions.DVSFunction;
 import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.plugin.Plugin;
@@ -43,7 +44,7 @@ public class VirtualStorage extends JavaPlugin {
         }
         core = (UniversalCore) pl;
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
-        prefix = config.getString("Settings.prefix");
+        prefix = ChatColor.translateAlternateColorCodes('&', config.getString("Settings.prefix"));
         DVSFunction.loadDefaultLangFiles();
         plugin.getServer().getPluginManager().registerEvents(new DVSEvent(), plugin);
         getCommand("창고").setExecutor(new DVSCommand());
