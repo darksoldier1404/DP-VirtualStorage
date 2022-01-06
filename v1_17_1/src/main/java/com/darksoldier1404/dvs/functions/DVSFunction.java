@@ -23,7 +23,7 @@ public class DVSFunction {
 
     public static void buyStorage(Player p) {
         if (plugin.ess == null) {
-            p.sendMessage("§c에센셜 플러그인이 설치되어있지 않아 창고 구매 기능을 사용하실 수 없습니다.");
+            p.sendMessage(lang.get("essential_is_not_found"));
             return;
         }
         UUID uuid = p.getUniqueId();
@@ -66,7 +66,11 @@ public class DVSFunction {
         YamlConfiguration data = plugin.udata.get(uuid);
         ItemStack bundle = new ItemStack(Material.BUNDLE);
         BundleMeta bm = (BundleMeta) bundle.getItemMeta();
-        Arrays.stream(inv.getContents()).collect(Collectors.toSet()).forEach(bm::addItem);
+        Arrays.stream(inv.getContents()).collect(Collectors.toSet()).forEach(item -> {
+            if (item != null && item.getType() != Material.AIR) {
+                bm.addItem(item);
+            }
+        });
         bundle.setItemMeta(bm);
         data.set("Storage." + num, bundle);
         saveData(uuid);
