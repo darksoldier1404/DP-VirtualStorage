@@ -1,4 +1,4 @@
-Lang: "Korean"
+lang: "Korean"
 
 storage_cmd_select: "/창고 선택 - 가상 창고 선택 GUI를 오픈합니다."
 storage_cmd_buy: "/창고 구매 - 가상 창고를 추가로 구매합니다."

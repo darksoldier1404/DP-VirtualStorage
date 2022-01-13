@@ -37,7 +37,7 @@ public class VirtualStorage extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         Plugin pl = getServer().getPluginManager().getPlugin("DP-UniversalCore");
-        if(pl == null) {
+        if (pl == null) {
             getLogger().warning("DP-UniversalCore 플러그인이 설치되어있지 않습니다.");
             plugin.setEnabled(false);
             return;
@@ -45,7 +45,7 @@ public class VirtualStorage extends JavaPlugin {
         core = (UniversalCore) pl;
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         prefix = ChatColor.translateAlternateColorCodes('&', config.getString("Settings.prefix"));
-        DVSFunction.loadDefaultLangFiles();
+        lang = new DLang(config.getString("Lang") == null ? "Korean" : config.getString("Lang"), plugin);
         plugin.getServer().getPluginManager().registerEvents(new DVSEvent(), plugin);
         getCommand("창고").setExecutor(new DVSCommand());
     }

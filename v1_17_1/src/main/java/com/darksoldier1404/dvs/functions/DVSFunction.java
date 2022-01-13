@@ -105,27 +105,4 @@ public class DVSFunction {
         plugin.udata.remove(uuid);
     }
 
-    public static void loadDefaultLangFiles() {
-        File f = new File(plugin.getDataFolder() + "/lang", "Korean.yml");
-        if (!f.exists()) {
-            plugin.saveResource("lang/Korean.yml", false);
-        }
-        f = new File(plugin.getDataFolder() + "/lang", "English.yml");
-        if (!f.exists()) {
-            plugin.saveResource("lang/English.yml", false);
-        }
-        for (YamlConfiguration data : ConfigUtils.loadCustomDataList(plugin, "lang")) {
-            try {
-                plugin.langFiles.put(data.getString("Lang"), data);
-            } catch (Exception e) {
-                System.out.println(plugin.prefix + "Error loading lang file: " + data.getName());
-            }
-        }
-        if (plugin.config.get("Settings.lang") == null) {
-            plugin.config.set("Settings.lang", "English");
-            plugin.lang = new DLang(plugin.langFiles.get("English"));
-        } else {
-            plugin.lang = new DLang(plugin.langFiles.get(plugin.config.getString("Settings.lang")));
-        }
-    }
 }
