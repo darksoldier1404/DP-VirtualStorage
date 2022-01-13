@@ -45,7 +45,7 @@ public class VirtualStorage extends JavaPlugin {
         core = (UniversalCore) pl;
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         prefix = ChatColor.translateAlternateColorCodes('&', config.getString("Settings.prefix"));
-        DVSFunction.loadDefaultLangFiles();
+        lang = new DLang(config.getString("Lang") == null ? "Korean" : config.getString("Lang"), plugin);
         plugin.getServer().getPluginManager().registerEvents(new DVSEvent(), plugin);
         getCommand("창고").setExecutor(new DVSCommand());
     }

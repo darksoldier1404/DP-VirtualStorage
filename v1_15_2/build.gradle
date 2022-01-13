@@ -7,7 +7,7 @@ tasks.withType(JavaCompile) {
     options.javaModuleVersion = '1.8'
 }
 group 'github.com/darksoldier1404'
-version = '1.0.0.51'
+version = '1.0.0.52'
 build {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
