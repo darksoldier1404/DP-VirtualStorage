@@ -17,6 +17,9 @@ version = '1.0.0.52'
 configurations {
     jar.archiveName = 'DP-VirtualStorage-_v1_18_1-' + version + '.jar'
 }
+jar{
+    destinationDirectory.set(file("$rootDir/jars"))
+}
 task DS_BUILD {
     doFirst {
         def v = buildFile.getText().find(version)
@@ -80,7 +83,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     compileOnly 'org.spigotmc:spigot-api:1.18-R0.1-SNAPSHOT'
     compileOnly 'net.essentialsx:EssentialsX:2.19.0'
-    compileOnly 'com.darksoldier1404.duc:DP-UniversalCore:1.18.1-SNAPSHOT'
+    compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.18.1-SNAPSHOT'
 }
 
 
