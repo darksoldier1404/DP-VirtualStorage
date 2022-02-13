@@ -1,8 +1,8 @@
 package com.darksoldier1404.dvs.functions;
 
-import com.darksoldier1404.duc.lang.DLang;
-import com.darksoldier1404.duc.utils.ConfigUtils;
-import com.darksoldier1404.duc.utils.NBT;
+import com.darksoldier1404.dppc.lang.DLang;
+import com.darksoldier1404.dppc.utils.ConfigUtils;
+import com.darksoldier1404.dppc.utils.NBT;
 import com.darksoldier1404.dvs.VirtualStorage;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;

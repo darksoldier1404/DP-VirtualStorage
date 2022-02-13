@@ -1,6 +1,6 @@
 package com.darksoldier1404.dvs.commands;
 
-import com.darksoldier1404.duc.lang.DLang;
+import com.darksoldier1404.dppc.lang.DLang;
 import com.darksoldier1404.dvs.VirtualStorage;
 import com.darksoldier1404.dvs.functions.DVSFunction;
 import org.bukkit.command.Command;

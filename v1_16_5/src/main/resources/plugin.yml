@@ -4,7 +4,7 @@ main: com.darksoldier1404.dvs.VirtualStorage
 api-version: 1.16
 authors: [ DEAD_POOLIO_ ]
 depend:
-  - DP-UniversalCore
+  - DPP-Core
 commands:
   창고:
     permission: dvs.use

@@ -1,8 +1,8 @@
 package com.darksoldier1404.dvs;
 
-import com.darksoldier1404.duc.UniversalCore;
-import com.darksoldier1404.duc.lang.DLang;
-import com.darksoldier1404.duc.utils.ConfigUtils;
+import com.darksoldier1404.dppc.DPPCore;
+import com.darksoldier1404.dppc.lang.DLang;
+import com.darksoldier1404.dppc.utils.ConfigUtils;
 import com.darksoldier1404.dvs.commands.DVSCommand;
 import com.darksoldier1404.dvs.events.DVSEvent;
 import com.darksoldier1404.dvs.functions.DVSFunction;
@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @SuppressWarnings("all")
 public class VirtualStorage extends JavaPlugin {
-    private UniversalCore core;
+    private DPPCore core;
     private static VirtualStorage plugin;
     public String prefix;
     public YamlConfiguration config;
@@ -36,13 +36,13 @@ public class VirtualStorage extends JavaPlugin {
 
     public void onEnable() {
         plugin = this;
-        Plugin pl = getServer().getPluginManager().getPlugin("DP-UniversalCore");
+        Plugin pl = getServer().getPluginManager().getPlugin("DPP-Core");
         if(pl == null) {
-            getLogger().warning("DP-UniversalCore 플러그인이 설치되어있지 않습니다.");
+            getLogger().warning("DPP-Core 플러그인이 설치되어있지 않습니다.");
             plugin.setEnabled(false);
             return;
         }
-        core = (UniversalCore) pl;
+        core = (DPPCore) pl;
         config = ConfigUtils.loadDefaultPluginConfig(plugin);
         prefix = ChatColor.translateAlternateColorCodes('&', config.getString("Settings.prefix"));
         lang = new DLang(config.getString("Lang") == null ? "Korean" : config.getString("Lang"), plugin);

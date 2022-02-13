@@ -10,6 +10,9 @@ build {
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 }
+jar{
+    destinationDirectory.set(file("$rootDir/jars"))
+}
 group 'github.com/darksoldier1404'
 version = '1.0.0.52'
 configurations {
@@ -33,7 +36,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     compileOnly 'org.spigotmc:spigot:1.14.4-R0.1-SNAPSHOT'
     compileOnly 'net.essentialsx:EssentialsX:2.19.0'
-    compileOnly 'com.darksoldier1404.duc:DP-UniversalCore:1.14.4-SNAPSHOT'
+    compileOnly 'com.darksoldier1404.dppc:DPP-Core:1.14.4-SNAPSHOT'
 }
 
 test {
