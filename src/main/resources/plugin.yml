@@ -1,0 +1,11 @@
+name: DP-VirtualStorage
+version: 1.0.0
+main: com.darksoldier1404.dpvs.VirtualStorage
+authors: [ DEAD_POOLIO_ ]
+api-version: 1.16
+depend:
+  - DPP-Core
+  - PlaceholderAPI
+commands:
+  dpvs:
+    aliases: [ virtualstorage, 창고, 가상창고 ]
